@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shortify — Modern URL Shortener</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { light: '#9BD1E5', DEFAULT: '#6A8EAE', dark: '#57A773' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans bg-gray-50 text-gray-900 antialiased">
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-xl font-bold text-gray-900">Shortify</a>
+    </nav>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-block px-3 py-1 rounded-full bg-[#9BD1E5] text-[#6A8EAE] text-sm font-medium mb-6">Simple & Fast</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-tight">
+          Shorten links. Track clicks. Grow faster.
+        </h1>
+        <p class="mt-6 text-lg text-gray-600">
+          Create clean, shareable links in seconds. Perfect for marketing, social media, and professional use.
+        </p>
+
+        <!-- URL Shortener -->
+        <div class="mt-10 max-w-2xl mx-auto bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <form id="shortenForm" class="flex flex-col sm:flex-row gap-3">
+            <input type="url" id="longUrl" name="url" placeholder="https://example.com/your-long-url" required
+                   class="flex-1 px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 outline-none text-gray-900 placeholder-gray-400 focus:border-[#6A8EAE] focus:ring-2 focus:ring-[#9BD1E5]">
+            <button type="submit" id="shortenBtn"
+                    class="px-8 py-4 rounded-xl bg-[#6A8EAE] text-white font-semibold hover:bg-[#5a7e9e] transition-colors shrink-0">
+              Shorten
+            </button>
+          </form>
+          <div id="result" class="mt-6 hidden p-4 rounded-xl bg-[#9BD1E5]/30 border border-[#6A8EAE]/20">
+            <p class="text-sm font-medium text-[#6A8EAE] mb-2">Your shortened link</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input type="text" id="shortLink" readonly
+                     class="flex-1 px-4 py-3 rounded-xl bg-white border border-gray-200 text-[#6A8EAE] font-mono text-sm truncate focus:outline-none focus:ring-2 focus:ring-[#6A8EAE]/30 focus:border-[#6A8EAE]"
+                     value="">
+              <div class="flex gap-2 shrink-0">
+                <a id="shortLinkAnchor" href="#" target="_blank" rel="noopener"
+                   class="px-4 py-3 rounded-xl bg-[#6A8EAE] text-white font-medium hover:bg-[#5a7e9e] transition-colors text-center">
+                  Open
+                </a>
+                <button type="button" id="copyBtn"
+                        class="px-4 py-3 rounded-xl bg-[#57A773] text-white font-medium hover:bg-[#4a9665] transition-colors flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  <span id="copyBtnText">Copy</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <p id="error" class="mt-4 text-sm text-red-500 hidden"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <a href="#" class="text-xl font-bold text-gray-900">Shortify</a>
+          <div class="flex gap-8">
+            <a href="#" class="text-gray-500 hover:text-gray-900 text-sm">Privacy</a>
+            <a href="#" class="text-gray-500 hover:text-gray-900 text-sm">Terms</a>
+            <a href="#" class="text-gray-500 hover:text-gray-900 text-sm">Contact</a>
+          </div>
+        </div>
+        <p class="mt-8 text-gray-400 text-sm">© 2025 Shortify. All rights reserved.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
